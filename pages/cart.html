@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart - HertzGiggles</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <!-- <link rel="stylesheet" href="../css/cart.css" /> -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/fav-icon/favicon-32x32.png"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header id="main-header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <a href="../index.html">
+              <span class="logo-icon">🧸</span>
+              <span class="logo-text">HertzGiggles</span>
+            </a>
+          </div>
+
+          <nav class="desktop-nav">
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="./products.html">Products</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle"
+                  >Categories <i class="fas fa-chevron-down"></i
+                ></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="./products.html?category=educational">Educational</a>
+                  </li>
+                  <li><a href="./products.html?category=plush">Plush Toys</a></li>
+                  <li>
+                    <a href="./products.html?category=outdoor">Outdoor Play</a>
+                  </li>
+                  <li>
+                    <a href="./products.html?category=creative">Arts & Crafts</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="header-actions">
+            <div class="search-container">
+              <button class="search-toggle" id="search-toggle">
+                <i class="fas fa-search"></i>
+              </button>
+              <div class="search-form" id="search-form">
+                <form action="./products.html" method="get">
+                  <input
+                    type="text"
+                    name="search"
+                    placeholder="Search for toys, games, accessories..."
+                  />
+                  <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+              </div>
+            </div>
+
+            <a href="./wishlist.html" class="wishlist-icon">
+              <i class="fas fa-heart"></i>
+              <span class="wishlist-count" id="wishlist-count">0</span>
+            </a>
+
+            <a href="./cart.html" class="cart-icon active">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="cart-count" id="cart-count">0</span>
+            </a>
+
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./products.html">Products</a></li>
+            <li class="mobile-dropdown">
+              <a href="#" class="mobile-dropdown-toggle"
+                >Categories <i class="fas fa-chevron-down"></i
+              ></a>
+              <ul class="mobile-dropdown-menu">
+                <li>
+                  <a href="./products.html?category=educational">Educational</a>
+                </li>
+                <li><a href="./products.html?category=plush">Plush Toys</a></li>
+                <li>
+                  <a href="./products.html?category=outdoor">Outdoor Play</a>
+                </li>
+                <li>
+                  <a href="./products.html?category=creative">Arts & Crafts</a>
+                </li>
+              </ul>
+            </li>
+            <li><a href="./wishlist.html">Wishlist</a></li>
+          </ul>
+          <div class="mobile-search">
+            <form action="./products.html" method="get">
+              <input
+                type="text"
+                name="search"
+                placeholder="Search products..."
+              />
+              <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Breadcrumb -->
+      <section class="breadcrumb-section">
+        <div class="container">
+          <ol class="breadcrumb">
+            <li><a href="../index.html">Home</a></li>
+            <li class="active"><span>Shopping Cart</span></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Cart Content -->
+      <section class="cart-section">
+        <div class="container">
+          <h1 class="page-title">Shopping Cart</h1>
+
+          <div id="cart-content">
+            <!-- Empty cart state (initially hidden) -->
+            <div id="empty-cart" style="display: none">
+              <div class="empty-cart-container">
+                <div class="empty-cart-icon">
+                  <i class="fas fa-shopping-cart"></i>
+                </div>
+                <h2>Your cart is empty</h2>
+                <p>Looks like you haven't added any toys to your cart yet.</p>
+                <a href="./products.html" class="btn btn-primary"
+                  >Continue Shopping</a
+                >
+              </div>
+            </div>
+
+            <!-- Cart with items (initially hidden) -->
+            <div id="cart-with-items" style="display: none">
+              <div class="cart-layout">
+                <!-- Cart Items -->
+                <div class="cart-items">
+                  <div class="cart-header">
+                    <div class="cart-header-product">Product</div>
+                    <div class="cart-header-price">Price</div>
+                    <div class="cart-header-quantity">Quantity</div>
+                    <div class="cart-header-total">Total</div>
+                  </div>
+
+                  <div id="cart-items-container">
+                    <!-- Cart items will be loaded via JavaScript -->
+                  </div>
+
+                  <div class="cart-actions">
+                    <a href="./products.html" class="btn btn-outline">
+                      <i class="fas fa-arrow-left"></i> Continue Shopping
+                    </a>
+                    <button
+                      id="clear-cart-btn"
+                      class="btn btn-outline btn-danger"
+                    >
+                      <i class="fas fa-trash-alt"></i> Clear Cart
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+                  <h3>Order Summary</h3>
+
+                  <div class="summary-line">
+                    <span>Subtotal</span>
+                    <span id="cart-subtotal">$0.00</span>
+                  </div>
+
+                  <div class="coupon-container">
+                    <div class="coupon-header">
+                      <h4>Have a coupon?</h4>
+                      <button id="toggle-coupon" class="toggle-coupon">
+                        <i class="fas fa-plus"></i>
+                      </button>
+                    </div>
+
+                    <div
+                      id="coupon-form-container"
+                      class="coupon-form-container"
+                      style="display: none"
+                    >
+                      <form id="coupon-form">
+                        <div class="coupon-input">
+                          <input
+                            type="text"
+                            id="coupon-code"
+                            placeholder="Enter coupon code"
+                          />
+                          <button type="submit" class="btn-apply">Apply</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+
+                  <div
+                    class="summary-line"
+                    id="discount-line"
+                    style="display: none"
+                  >
+                    <span>Discount</span>
+                    <span id="cart-discount">-$0.00</span>
+                  </div>
+
+                  <div class="summary-line">
+                    <span>Shipping</span>
+                    <span id="cart-shipping">$0.00</span>
+                  </div>
+
+                  <div class="shipping-options">
+                    <label class="shipping-option">
+                      <input
+                        type="radio"
+                        name="shipping"
+                        value="free"
+                        checked
+                      />
+                      <span class="checkmark"></span>
+                      <span class="shipping-option-label"
+                        >Free Shipping (3-5 business days)</span
+                      >
+                    </label>
+                    <label class="shipping-option">
+                      <input type="radio" name="shipping" value="standard" />
+                      <span class="checkmark"></span>
+                      <span class="shipping-option-label"
+                        >Standard Shipping - $5.99 (2-3 business days)</span
+                      >
+                    </label>
+                    <label class="shipping-option">
+                      <input type="radio" name="shipping" value="express" />
+                      <span class="checkmark"></span>
+                      <span class="shipping-option-label"
+                        >Express Shipping - $12.99 (1-2 business days)</span
+                      >
+                    </label>
+                  </div>
+
+                  <div class="summary-line">
+                    <span>Sales Tax</span>
+                    <span id="cart-tax">$0.00</span>
+                  </div>
+
+                  <div class="summary-total">
+                    <span>Total</span>
+                    <span id="cart-total">$0.00</span>
+                  </div>
+
+                  <div class="checkout-actions">
+                    <a
+                      href="./checkout.html"
+                      class="btn btn-primary btn-checkout"
+                    >
+                      Proceed to Checkout <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <div class="payment-icons">
+                      <i class="fab fa-cc-visa"></i>
+                      <i class="fab fa-cc-mastercard"></i>
+                      <i class="fab fa-cc-amex"></i>
+                      <i class="fab fa-cc-paypal"></i>
+                      <i class="fab fa-cc-apple-pay"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Loading spinner (initially shown) -->
+            <div id="cart-loading" class="loading-spinner">
+              <div class="spinner"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Saved for Later -->
+      <section
+        class="saved-later-section"
+        id="saved-later-section"
+        style="display: none"
+      >
+        <div class="container">
+          <h2 class="section-title">Saved for Later</h2>
+          <div class="saved-items" id="saved-items-container">
+            <!-- Saved items will be loaded via JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- You May Also Like -->
+      <section class="suggestions-section">
+        <div class="container">
+          <h2 class="section-title">You May Also Like</h2>
+          <div class="products-grid" id="suggested-products">
+            <!-- Products will be loaded via JavaScript -->
+            <div class="loading-spinner">
+              <div class="spinner"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>HertzGiggles</h3>
+            <p>
+              Bringing joy and imagination to children of all ages with our
+              carefully curated selection of toys, games, and accessories.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="./products.html">Shop</a></li>
+              <li><a href="./products.html?category=new">New Arrivals</a></li>
+              <li><a href="./products.html?onSale=true">Sale</a></li>
+              <li><a href="./wishlist.html">Wishlist</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Customer Service</h3>
+            <ul>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Shipping Policy</a></li>
+              <li><a href="#">Returns & Exchanges</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i>14 Chapel Avenue, Tanke.
+                Ilorin
+              </li>
+              <li><i class="fas fa-phone"></i>+2349011557263</li>
+              <li><i class="fas fa-envelope"></i> info@hertzgiggles.com</li>
+            </ul>
+            <div class="store-hours">
+              <h4>Store Hours:</h4>
+              <p>Mon-Sat: 9AM - 8PM</p>
+              <p>Sunday: 10AM - 6PM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="current-year"></span> HertzGiggles. All rights
+            reserved.
+          </p>
+          <div class="footer-links">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Accessibility</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Confirmation Modal for Remove Item -->
+    <div id="confirm-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Remove Item</h3>
+          <button class="close-modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to remove this item from your cart?</p>
+        </div>
+        <div class="modal-footer">
+          <button id="confirm-remove" class="btn btn-danger">Remove</button>
+          <button id="cancel-remove" class="btn btn-outline">Cancel</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/products.js"></script>
+    <script src="../js/cart.js"></script>
+  </body>
+</html>

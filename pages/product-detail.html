@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Detail - HertzGiggles</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <!-- <link rel="stylesheet" href="../css/product-detail.css" /> -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="../assets/fav-icon/favicon-32x32.png"
+    />
+    <!-- Font Awesome for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header id="main-header">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <a href="../index.html">
+              <span class="logo-icon">🧸</span>
+              <span class="logo-text">HertzGiggles</span>
+            </a>
+          </div>
+
+          <nav class="desktop-nav">
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="./products.html">Products</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle"
+                  >Categories <i class="fas fa-chevron-down"></i
+                ></a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a href="./products.html?category=educational"
+                      >Educational</a
+                    >
+                  </li>
+                  <li>
+                    <a href="./products.html?category=plush">Plush Toys</a>
+                  </li>
+                  <li>
+                    <a href="./products.html?category=outdoor">Outdoor Play</a>
+                  </li>
+                  <li>
+                    <a href="./products.html?category=creative"
+                      >Arts & Crafts</a
+                    >
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="header-actions">
+            <div class="search-container">
+              <button class="search-toggle" id="search-toggle">
+                <i class="fas fa-search"></i>
+              </button>
+              <div class="search-form" id="search-form">
+                <form action="./products.html" method="get">
+                  <input
+                    type="text"
+                    name="search"
+                    placeholder="Search for toys, games, accessories..."
+                  />
+                  <button type="submit"><i class="fas fa-search"></i></button>
+                </form>
+              </div>
+            </div>
+
+            <a href="./wishlist.html" class="wishlist-icon">
+              <i class="fas fa-heart"></i>
+              <span class="wishlist-count" id="wishlist-count">0</span>
+            </a>
+
+            <a href="./cart.html" class="cart-icon">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="cart-count" id="cart-count">0</span>
+            </a>
+
+            <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+              <i class="fas fa-bars"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./products.html">Products</a></li>
+            <li class="mobile-dropdown">
+              <a href="#" class="mobile-dropdown-toggle"
+                >Categories <i class="fas fa-chevron-down"></i
+              ></a>
+              <ul class="mobile-dropdown-menu">
+                <li>
+                  <a href="./products.html?category=educational">Educational</a>
+                </li>
+                <li><a href="./products.html?category=plush">Plush Toys</a></li>
+                <li>
+                  <a href="./products.html?category=outdoor">Outdoor Play</a>
+                </li>
+                <li>
+                  <a href="./products.html?category=creative">Arts & Crafts</a>
+                </li>
+              </ul>
+            </li>
+            <li><a href="./wishlist.html">Wishlist</a></li>
+          </ul>
+          <div class="mobile-search">
+            <form action="./products.html" method="get">
+              <input
+                type="text"
+                name="search"
+                placeholder="Search products..."
+              />
+              <button type="submit"><i class="fas fa-search"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Breadcrumb -->
+      <section class="breadcrumb-section">
+        <div class="container">
+          <ol class="breadcrumb">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="./products.html">Products</a></li>
+            <li id="category-breadcrumb">
+              <a href="#" id="category-link">Category</a>
+            </li>
+            <li class="active">
+              <span id="product-name-breadcrumb">Product Name</span>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- Product Detail -->
+      <section class="product-detail-section">
+        <div class="container">
+          <div class="product-detail-container" id="product-detail">
+            <!-- Loading spinner initially -->
+            <div class="loading-spinner">
+              <div class="spinner"></div>
+            </div>
+
+            <!-- Product content will be loaded via JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Product Details Tabs -->
+      <section class="product-tabs-section">
+        <div class="container">
+          <div class="product-tabs">
+            <div class="tabs-header">
+              <button class="tab-btn active" data-tab="description">
+                Description
+              </button>
+              <button class="tab-btn" data-tab="features">Features</button>
+              <button class="tab-btn" data-tab="specifications">
+                Specifications
+              </button>
+              <button class="tab-btn" data-tab="reviews">
+                Reviews <span id="review-count">(0)</span>
+              </button>
+            </div>
+            <div class="tabs-content">
+              <div class="tab-panel active" id="description-panel">
+                <div class="loading-spinner">
+                  <div class="spinner"></div>
+                </div>
+                <!-- Description content will be loaded via JavaScript -->
+              </div>
+              <div class="tab-panel" id="features-panel">
+                <div class="loading-spinner">
+                  <div class="spinner"></div>
+                </div>
+                <!-- Features content will be loaded via JavaScript -->
+              </div>
+              <div class="tab-panel" id="specifications-panel">
+                <div class="loading-spinner">
+                  <div class="spinner"></div>
+                </div>
+                <!-- Specifications content will be loaded via JavaScript -->
+              </div>
+              <div class="tab-panel" id="reviews-panel">
+                <div class="loading-spinner">
+                  <!-- <div class="spinner"></div> -->
+                </div>
+                <!-- Reviews content will be loaded via JavaScript -->
+                <div class="reviews-container" style="display: none">
+                  <div class="reviews-summary">
+                    <div class="rating-summary">
+                      <div class="average-rating">
+                        <div class="rating-number" id="average-rating">0.0</div>
+                        <div class="rating-stars" id="average-rating-stars">
+                          <!-- Stars will be generated via JavaScript -->
+                        </div>
+                        <div class="total-reviews" id="total-reviews">
+                          Based on 0 reviews
+                        </div>
+                      </div>
+                      <div class="rating-breakdown">
+                        <div class="rating-bar">
+                          <div class="rating-label">5 stars</div>
+                          <div class="progress-bar">
+                            <div class="progress" style="width: 0%"></div>
+                          </div>
+                          <div class="rating-count">0</div>
+                        </div>
+                        <div class="rating-bar">
+                          <div class="rating-label">4 stars</div>
+                          <div class="progress-bar">
+                            <div class="progress" style="width: 0%"></div>
+                          </div>
+                          <div class="rating-count">0</div>
+                        </div>
+                        <div class="rating-bar">
+                          <div class="rating-label">3 stars</div>
+                          <div class="progress-bar">
+                            <div class="progress" style="width: 0%"></div>
+                          </div>
+                          <div class="rating-count">0</div>
+                        </div>
+                        <div class="rating-bar">
+                          <div class="rating-label">2 stars</div>
+                          <div class="progress-bar">
+                            <div class="progress" style="width: 0%"></div>
+                          </div>
+                          <div class="rating-count">0</div>
+                        </div>
+                        <div class="rating-bar">
+                          <div class="rating-label">1 star</div>
+                          <div class="progress-bar">
+                            <div class="progress" style="width: 0%"></div>
+                          </div>
+                          <div class="rating-count">0</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="write-review">
+                      <button id="write-review-btn" class="btn btn-primary">
+                        Write a Review
+                      </button>
+                    </div>
+                  </div>
+
+                  <div id="review-form-container" style="display: none">
+                    <h3>Write a Review</h3>
+                    <form id="review-form">
+                      <div class="form-group">
+                        <label
+                          >Your Rating <span class="required">*</span></label
+                        >
+                        <div class="rating-select">
+                          <i class="far fa-star" data-rating="1"></i>
+                          <i class="far fa-star" data-rating="2"></i>
+                          <i class="far fa-star" data-rating="3"></i>
+                          <i class="far fa-star" data-rating="4"></i>
+                          <i class="far fa-star" data-rating="5"></i>
+                        </div>
+                        <input
+                          type="hidden"
+                          id="rating-value"
+                          value="0"
+                          required
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="review-title"
+                          >Review Title <span class="required">*</span></label
+                        >
+                        <input type="text" id="review-title" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="review-name"
+                          >Your Name <span class="required">*</span></label
+                        >
+                        <input type="text" id="review-name" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="review-email"
+                          >Email <span class="required">*</span></label
+                        >
+                        <input type="email" id="review-email" required />
+                      </div>
+                      <div class="form-group">
+                        <label for="review-content"
+                          >Your Review <span class="required">*</span></label
+                        >
+                        <textarea
+                          id="review-content"
+                          rows="5"
+                          required
+                        ></textarea>
+                      </div>
+                      <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">
+                          Submit Review
+                        </button>
+                        <button
+                          type="button"
+                          id="cancel-review"
+                          class="btn btn-outline"
+                        >
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+
+                  <div class="reviews-list" id="reviews-list">
+                    <!-- Reviews will be loaded via JavaScript -->
+                  </div>
+
+                  <div class="pagination" id="reviews-pagination">
+                    <!-- Pagination will be generated via JavaScript -->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Related Products -->
+      <section class="related-products-section">
+        <div class="container">
+          <h2 class="section-title">You May Also Like</h2>
+          <div class="products-grid" id="related-products">
+            <!-- Products will be loaded via JavaScript -->
+            <div class="loading-spinner">
+              <div class="spinner"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recently Viewed Products -->
+      <section class="recently-viewed-section">
+        <div class="container">
+          <h2 class="section-title">Recently Viewed</h2>
+          <div class="products-grid" id="recently-viewed-products">
+            <!-- Products will be loaded via JavaScript -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-column">
+            <h3>HertzGiggles</h3>
+            <p>
+              Bringing joy and imagination to children of all ages with our
+              carefully curated selection of toys, games, and accessories.
+            </p>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="./products.html">Shop</a></li>
+              <li><a href="./products.html?category=new">New Arrivals</a></li>
+              <li><a href="./products.html?onSale=true">Sale</a></li>
+              <li><a href="./wishlist.html">Wishlist</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Customer Service</h3>
+            <ul>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">FAQs</a></li>
+              <li><a href="#">Shipping Policy</a></li>
+              <li><a href="#">Returns & Exchanges</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Contact Us</h3>
+            <ul class="contact-info">
+              <li>
+                <i class="fas fa-map-marker-alt"></i> 14 Chapel Avenue, Tanke.
+                Ilorin
+              </li>
+              <li><i class="fas fa-phone"></i>+2349011557263</li>
+              <li><i class="fas fa-envelope"></i> info@hertzgiggles.com</li>
+            </ul>
+            <div class="store-hours">
+              <h4>Store Hours:</h4>
+              <p>Mon-Sat: 9AM - 8PM</p>
+              <p>Sunday: 10AM - 6PM</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>
+            &copy; <span id="current-year"></span> HertzGiggles. All rights
+            reserved.
+          </p>
+          <div class="footer-links">
+            <a href="#">Terms of Service</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Accessibility</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/product-detail.js"></script>
+  </body>
+</html>
